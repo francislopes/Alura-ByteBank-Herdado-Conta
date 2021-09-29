@@ -1,0 +1,20 @@
+public class ContaCorrente extends Conta implements Tributavel{
+
+    public ContaCorrente(int agencia, int numero) { super(agencia, numero); }
+
+    @Override
+    public void deposita(double valor) {
+        super.saldo += valor;
+    }
+
+    @Override
+    public void saca(double valor) throws SaldoInsuficienteException{
+        double valorASacar = valor + 0.2; //cobra 20 centavos por transacao
+        super.saca(valorASacar);
+    }
+
+    @Override
+    public double getValorImposto() {
+        return super.saldo * 0.01;
+    }
+}
